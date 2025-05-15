@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+    }
+
+    .navbar {
+      background-color: #1c1c1c;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar-title {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: auto;
+    }
+
+    .navbar a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .navbar a:hover {
+      color: orange;
+    }
+
+    .login-container {
+      max-width: 400px;
+      background-color: white;
+      padding: 30px;
+      margin: 40px auto;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      border-radius: 8px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .login-input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
+    .login-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #1c1c1c;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .login-button:hover {
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="navbar-title">AdminDashboard</div>
+    <a href="{% url 'course' %}">Add Course</a>
+    <a href="{% url 'stdsignup' %}">Add Student</a>
+    <a href="{% url 'show' %}">View Students</a>
+    <a href="{% url 'manage_teachers' %}">Manage Teachers</a>
+  </div>
+
+  <div class="login-container">
+    <h2>Add Course</h2>
+    <form action="{% url 'add_course' %}" method="POST">
+      {% csrf_token %}
+      <input type="text" class="login-input" name="course" placeholder="Course" required />
+      <input type="number" class="login-input" name="fee" placeholder="Fees" required />
+      <button type="submit" class="login-button">Add</button>
+    </form>
+  </div>
+</body>
+</html>

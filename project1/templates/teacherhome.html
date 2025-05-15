@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Homepage</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        a {
+            text-decoration: none;
+            padding: 12px 24px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 6px;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        a:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome, [Teacher Name]</h1>
+
+    <div class="button-container">
+        <a href="{% url 'teacher_card' %}">View Profile</a>
+        <a href="{% url 'logout_fun' %}">Logout</a>
+    </div>
+</body>
+</html>

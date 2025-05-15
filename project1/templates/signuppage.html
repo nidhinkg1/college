@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Signup</title>
+ <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .signup-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+
+  .signup-box h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #fff;
+  }
+
+  .signup-input {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+  }
+
+  .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    font-size: 14px;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }
+
+  .signup-button:hover {
+    background-color: #218838;
+  }
+
+  .alert {
+    background-color: #dc3545;
+    padding: 8px;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+    margin-top: 8px;
+    font-size: 12px;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 10px;
+    color: #ccc;
+    font-size: 13px;
+  }
+
+  p a {
+    color: #17a2b8;
+    text-decoration: none;
+  }
+
+  p a:hover {
+    text-decoration: underline;
+  }
+
+  select.signup-input {
+    height: 36px;
+  }
+</style>
+
+</head>
+<body>
+  <div class="signup-box">
+    <h2>Teacher Signup</h2>
+    <form action="{% url 'user_sign' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input type="text" class="signup-input" name="fname" placeholder="Firstname" required>
+      <input type="text" class="signup-input" name="lname" placeholder="Lastname" required>
+      <input type="text" class="signup-input" name="uname" placeholder="Username" required>
+      <input type="text" class="signup-input" name="add" placeholder="Address" required>
+      <input type="number" class="signup-input" name="age" placeholder="Age" required>
+      <input type="email" class="signup-input" name="mail" placeholder="Email Address" required>
+      <input type="number" class="signup-input" name="phone" placeholder="Phone Number" required>
+      <input type="password" class="signup-input" name="pass" placeholder="Password" required>
+      <input type="password" class="signup-input" name="cpass" placeholder="Confirm Password" required>
+
+      <select class="signup-input" name="c">
+        {% for c in crs %}
+        <option value="{{ c.id }}">{{ c.coursename }}</option>
+        {% endfor %}
+      </select>
+
+      <button type="submit" class="signup-button">Sign Up</button>
+    </form>
+
+    {% for msg in messages %}
+    <div class="alert">
+      {{ msg }}
+    </div>
+    {% endfor %}
+
+    <p>Already have an account? <a href="">Log In</a></p>
+  </div>
+</body>
+</html>

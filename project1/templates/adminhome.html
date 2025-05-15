@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+    }
+    a:hover {
+      color: orange;
+    }
+    .navbar {
+      background-color: #1c1c1c;
+      padding: 15px 30px;
+      display: flex;
+      align-items: center;
+    }
+    .title {
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <div class="title">AdminDashboard</div>
+
+    <a href="{% url 'add_course' %}">Add Course</a>
+    <a href="{% url 'stdsignup' %}">Add Student</a>
+    <a href="{% url 'manage_teachers' %}">Manage Teachers</a>
+    <a href="#">Contact</a>
+  </div>
+
+</body>
+</html>
